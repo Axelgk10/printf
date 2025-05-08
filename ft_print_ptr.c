@@ -1,3 +1,5 @@
+#include "printf.h"
+
 int ft_print_ptr(void   *ptr)
 {
     unsigned long   address;
@@ -6,7 +8,7 @@ int ft_print_ptr(void   *ptr)
     count = 0;
     if (!ptr)
     {
-        write (1, "nil", 3);
+        count += write (1, "nil", 3);
         return (count);
     }
     address = (unsigned long)ptr;
@@ -35,8 +37,13 @@ int ft_print_hex(unsigned long num, int uppercase)
         buffer[i++] = digits[num % 16];
         num /= 16;
     }
+    while (i > 0)
+    {
+        count += write (1, &buffer[--i], 1);
+    }
     return (count);
 }
+
 #include <stdio.h>
 
 int ft_print_ptr(void *ptr);
