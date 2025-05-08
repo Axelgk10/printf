@@ -1,4 +1,6 @@
 #include "printf.h"
+#include <stdio.h>
+#include <unistd.h>
 
 int ft_print_ptr(void   *ptr)
 {
@@ -43,30 +45,23 @@ int ft_print_hex(unsigned long num, int uppercase)
     }
     return (count);
 }
-
-#include <stdio.h>
-
-int ft_print_ptr(void *ptr);
-int ft_print_hex(unsigned long num, int uppercase);
-
 int main(void)
 {
-    int number = 42;
-    int *ptr = &number;
-    char *str = "Hola mundo";
+    int num = 42;
+    char *str = "Hola";
     void *null_ptr = NULL;
     int count;
 
     // Test 1: Imprimir dirección de un entero
     printf("\nTest 1: Dirección de un entero\n");
-    printf("printf: %p\n", (void *)ptr);
+    printf("printf: %p\n", &num);
     printf("ft_print_ptr: ");
-    count = ft_print_ptr(ptr);
+    count = ft_print_ptr(&num);
     printf("\nCaracteres impresos: %d\n", count);
 
     // Test 2: Imprimir dirección de un string
     printf("\nTest 2: Dirección de un string\n");
-    printf("printf: %p\n", (void *)str);
+    printf("printf: %p\n", str);
     printf("ft_print_ptr: ");
     count = ft_print_ptr(str);
     printf("\nCaracteres impresos: %d\n", count);
@@ -77,6 +72,16 @@ int main(void)
     printf("ft_print_ptr: ");
     count = ft_print_ptr(null_ptr);
     printf("\nCaracteres impresos: %d\n", count);
+
+    // Test 4: Imprimir dirección de la propia función
+    printf("\nTest 4: Dirección de una función\n");
+    printf("printf: %p\n", &ft_print_ptr);
+    printf("ft_print_ptr: ");
+    count = ft_print_ptr(&ft_print_ptr);
+    printf("\nCaracteres impresos: %d\n", count);
+
+    return 0;
+}
 
     return 0;
 }
