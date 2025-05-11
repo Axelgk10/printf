@@ -9,7 +9,7 @@ int ft_print_hex_lower(unsigned int num)
     int     i;
 
     i = 0;
-    digits = "abcdef0123456789";
+    digits = "0123456789abcdef";
     count = 0;
     if (num == 0)
     {
