@@ -46,40 +46,47 @@ int	ft_print_ptr(void	*ptr)
 }
 
 
-int main(void)
-{
-    int num = 42;
-    char *str = "Hola";
+int ft_print_hex(unsigned long num, int uppercase);
+int ft_print_ptr(void *ptr);
+
+int main(void) {
+    int x = 42;
+    char c = 'A';
     void *null_ptr = NULL;
     int count;
 
-    // Test 1: Imprimir dirección de un entero
-    printf("\nTest 1: Dirección de un entero\n");
-    printf("printf: %p\n", &num);
-    printf("ft_print_ptr: ");
-    count = ft_print_ptr(&num);
-    printf("\nCaracteres impresos: %d\n", count);
+    // Prueba ft_print_hex
+    write(1, "Pruebas ft_print_hex:\n", 21);
+    write(1, "0 en minúsculas: ", 17);
+    count = ft_print_hex(0, 0);
+    write(1, "\n", 1);
 
-    // Test 2: Imprimir dirección de un string
-    printf("\nTest 2: Dirección de un string\n");
-    printf("printf: %p\n", str);
-    printf("ft_print_ptr: ");
-    count = ft_print_ptr(str);
-    printf("\nCaracteres impresos: %d\n", count);
+    write(1, "255 en minúsculas: ", 19);
+    count = ft_print_hex(255, 0);
+    write(1, "\n", 1);
 
-    // Test 3: Imprimir puntero nulo
-    printf("\nTest 3: Puntero nulo\n");
-    printf("printf: %p\n", null_ptr);
-    printf("ft_print_ptr: ");
+    write(1, "255 en mayúsculas: ", 19);
+    count = ft_print_hex(255, 1);
+    write(1, "\n\n", 2);
+
+    // Prueba ft_print_ptr
+    write(1, "Pruebas ft_print_ptr:\n", 21);
+    write(1, "Puntero NULL: ", 14);
     count = ft_print_ptr(null_ptr);
-    printf("\nCaracteres impresos: %d\n", count);
+    write(1, "\n", 1);
 
-    // Test 4: Imprimir dirección de la propia función
-    printf("\nTest 4: Dirección de una función\n");
-    printf("printf: %p\n", &ft_print_ptr);
-    printf("ft_print_ptr: ");
-    count = ft_print_ptr(&ft_print_ptr);
-    printf("\nCaracteres impresos: %d\n", count);
+    write(1, "Dirección de x: ", 17);
+    count = ft_print_ptr(&x);
+    write(1, "\n", 1);
+
+    write(1, "Dirección de c: ", 17);
+    count = ft_print_ptr(&c);
+    write(1, "\n", 1);
+
+    // Puntero a función (caso especial)
+    write(1, "Dirección de main: ", 19);
+    count = ft_print_ptr(&main);
+    write(1, "\n", 1);
 
     return 0;
 }
