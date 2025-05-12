@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <unistd.h>  // Necesario para la función write()
+#include <unistd.h> 
 
 int	ft_print_hex(unsigned long num, int uppercase)
 {
