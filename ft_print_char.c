@@ -1,38 +1,33 @@
-#include <unistd.h>
+#include <stdio.h>
+#include <unistd.h>  // Necesario para la función write()
+
+
 
 int	ft_print_char(int c)
 {
-	write (1, &c, 1);
+	return (write (1, &c, 1));
 }
 
-#include <unistd.h>
-
-int ft_print_char(int c);
 
 int main(void)
 {
-    // Casos de prueba normales
-    ft_print_char('H');
-    ft_print_char('o');
-    ft_print_char('l');
-    ft_print_char('a');
-    ft_print_char('\n');
-    
-    // Caracteres especiales
-    ft_print_char('\t');  // Tabulación
-    ft_print_char(' ');   // Espacio
-    ft_print_char('!');
-    ft_print_char('\n');
-    
-    // Límites de char
-    ft_print_char(0);     // Null character (no visible)
-    ft_print_char(127);   // Último ASCII estándar
-    ft_print_char('\n');
-    
-    // Caracteres numéricos
-    ft_print_char('2');
-    ft_print_char('5');
-    ft_print_char('\n');
-    
-    return 0;
+    int count;
+
+    // Test 1: Imprimir un carácter normal
+    count = ft_print_char('A');
+    printf("\nCaracteres impresos: %d\n", count);
+
+    // Test 2: Imprimir un número como carácter
+    count = ft_print_char(65); // Debería imprimir 'A'
+    printf("\nCaracteres impresos: %d\n", count);
+
+    // Test 3: Imprimir un carácter especial
+    count = ft_print_char('\n');
+    printf("Caracteres impresos: %d\n", count);
+
+    // Test 4: Imprimir un carácter no imprimible
+    count = ft_print_char('\t');
+    printf("Caracteres impresos: %d\n", count);
+
+    return (0);
 }
