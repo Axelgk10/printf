@@ -28,8 +28,6 @@ int	ft_print_hex_lower(unsigned int num)
 	return (count);
 }
 
-#include <stdio.h>
-#include <limits.h>
 
 int ft_print_hex_lower(unsigned int num);
 
